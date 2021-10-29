@@ -36,10 +36,10 @@ class CollectionCell: UICollectionViewCell {
     }()
     
     func configure() {
-        print(":::::::::::::::::::::::::::::;;")
+       
         layer.cornerRadius = 5
         layer.borderWidth = 2
-        layer.borderColor = UIColor.systemGray.cgColor
+        layer.borderColor = UIColor.purple.cgColor
         addSubview(titleLable)
         addSubview(descriptionLabel)
         titleLable.translatesAutoresizingMaskIntoConstraints = false

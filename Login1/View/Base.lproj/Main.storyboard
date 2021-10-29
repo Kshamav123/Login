@@ -334,6 +334,7 @@
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-s7-Yzy">
                                 <rect key="frame" x="60" y="141" width="294" height="40"/>
+                                <color key="backgroundColor" red="0.88803528546459798" green="0.8713876813464253" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uvS-JI-kxp"/>
                                 </constraints>
@@ -342,7 +343,7 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-5b-mZ8">
                                 <rect key="frame" x="60" y="191" width="294" height="300"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.88159337715342456" green="0.85671842927784958" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="XGX-dp-vpo"/>
                                 </constraints>
@@ -371,9 +372,12 @@
                                     <constraint firstAttribute="height" constant="50" id="qMS-7u-stN"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Edit Notes">
+                                <buttonConfiguration key="configuration" style="plain" title="Delete Notes">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteNotesButton:" destination="vXM-Oz-5jr" eventType="touchUpInside" id="ukE-C0-Iya"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lf2-KI-yGx"/>
@@ -403,7 +407,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kH-MY-5lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933" y="-1136"/>
+            <point key="canvasLocation" x="551" y="-1136"/>
+        </scene>
+        <!--Account View Controller-->
+        <scene sceneID="15M-mf-ylG">
+            <objects>
+                <viewController storyboardIdentifier="AccountVC" id="FXC-XZ-QMc" customClass="AccountViewController" customModule="Login1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rnX-dE-pOb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQl-cK-XjQ">
+                                <rect key="frame" x="327" y="44" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="FXC-XZ-QMc" eventType="touchUpInside" id="48C-l9-Pn2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YrI-Ng-i0E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41I-z4-pre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1439" y="-1024"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="b1c-ig-tYx">
+            <objects>
+                <viewController id="2Do-W1-ycD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="giC-tH-S0B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MTZ-c8-5NH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TCJ-7L-jtF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1825" y="-155"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="z54-iS-Ie1">
@@ -460,21 +505,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uM4-yp-RIJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-465" y="-1046"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="7gE-ye-HmH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zzt-NN-MHx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M8p-9X-H1D">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OlM-D0-c03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2044.9275362318842" y="-438.61607142857139"/>
         </scene>
     </scenes>
     <resources>

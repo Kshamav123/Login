@@ -47,6 +47,13 @@ struct NetworkManager {
         return Auth.auth().currentUser?.uid
     }
     
+    func addNote(note: [String: Any]) {
+        
+        let db = Firestore.firestore()
+        db.collection("notes").addDocument(data: note)
+        
+    }
+    
     func getNotes( completion: @escaping([Notes]) -> Void) {
         
         let db = Firestore.firestore()
@@ -64,13 +71,13 @@ struct NetworkManager {
             for document in snapshot.documents {
                 
                 let data = document.data()
-                
+                let id = document.documentID
                 let title = data["title"] as? String ?? ""
                 let description = data["note"] as? String ?? ""
                 let uid = data["uid"] as? String ?? ""
                 let time = data["time"] as? String ?? ""
                 
-                let note = Notes(title: title, description: description, uid: uid, time: time)
+                let note = Notes(id: id, title: title, description: description, uid: uid, time: time)
               
                 notes.append(note)
                                
@@ -94,5 +101,30 @@ struct NetworkManager {
             
         }
         
+    func updateNote(note: Notes) {
+        
+        let db = Firestore.firestore()
+        db.collection("notes").document(note.id).updateData(["title": note.title, "note": note.description]) {
+            error in
+            
+            if let error = error {
+                
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func deleteNote(note: Notes) {
+        
+        let db = Firestore.firestore()
+        db.collection("notes").document(note.id).delete {
+            error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
     
 }

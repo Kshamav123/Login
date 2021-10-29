@@ -9,7 +9,7 @@ import Foundation
  import FirebaseFirestore
 
 struct Notes {
-    
+    var id : String
     var title: String
     var description: String
     var uid: String
@@ -17,6 +17,7 @@ struct Notes {
     
     var dictionary: [String: Any] {
            return[
+            "id": id,
            "title": title,
            "description": description,
            "uid":uid,

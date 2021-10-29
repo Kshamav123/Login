@@ -16,6 +16,10 @@ class AccountViewController: UIViewController {
     }
     
 
+    @IBAction func cancelTapped(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

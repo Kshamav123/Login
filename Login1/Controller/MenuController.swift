@@ -63,8 +63,12 @@ class MenuController: UITableViewController {
         switch list[indexPath.row] {
         case "Account":
 
-   print("")
-          
+            print("")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let accountViewController = storyboard.instantiateViewController(withIdentifier: "AccountVC") as? AccountViewController
+            accountViewController?.modalPresentationStyle = .fullScreen
+            present(accountViewController!,animated: true,completion: nil)
+         
             
         case "Logout":
             let isSignedOut = NetworkManager.manager.signout()
