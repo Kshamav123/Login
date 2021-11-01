@@ -29,11 +29,13 @@
 		CDCCD3EA271EC91700F6BBD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDCCD3E9271EC91700F6BBD4 /* GoogleService-Info.plist */; };
 		CDCCD3EC271EE53000F6BBD4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCCD3EB271EE53000F6BBD4 /* Constants.swift */; };
 		CDCD18392729BD7700E2AA9C /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD18382729BD7700E2AA9C /* CollectionCell.swift */; };
+		CDCD51BD272D404C00473BC0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD51BC272D404B00473BC0 /* RealmManager.swift */; };
 		CDCFA81727280058006F30CB /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCFA81627280058006F30CB /* AddViewController.swift */; };
 		CDD28D9E2727C35C00076B5E /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD28D9D2727C35C00076B5E /* MenuController.swift */; };
 		CDD28DA02727C38600076B5E /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD28D9F2727C38600076B5E /* MenuCell.swift */; };
 		CDD34C682729306300B99FFB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD34C672729306300B99FFB /* SettingsViewController.swift */; };
 		CDD34C6A2729308500B99FFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD34C692729308500B99FFB /* AccountViewController.swift */; };
+		CDDE4CF5272D17C50012011A /* NotesRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4CF4272D17C50012011A /* NotesRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,11 +76,13 @@
 		CDCCD3E9271EC91700F6BBD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CDCCD3EB271EE53000F6BBD4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CDCD18382729BD7700E2AA9C /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		CDCD51BC272D404B00473BC0 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CDCFA81627280058006F30CB /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		CDD28D9D2727C35C00076B5E /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		CDD28D9F2727C38600076B5E /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		CDD34C672729306300B99FFB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CDD34C692729308500B99FFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		CDDE4CF4272D17C50012011A /* NotesRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBA5CE8272128F800CE9C0F /* NetworkManager.swift */,
+				CDCD51BC272D404B00473BC0 /* RealmManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				CDC5BD142729941500B5ED14 /* Notes.swift */,
+				CDDE4CF4272D17C50012011A /* NotesRealm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				CDCCD3E2271EC0C800F6BBD4 /* LoginViewController.swift in Sources */,
 				CDCCD3D2271EBBD900F6BBD4 /* ViewController.swift in Sources */,
 				CDCD18392729BD7700E2AA9C /* CollectionCell.swift in Sources */,
+				CDCD51BD272D404C00473BC0 /* RealmManager.swift in Sources */,
 				CDCCD3CE271EBBD900F6BBD4 /* AppDelegate.swift in Sources */,
 				CDC5BD152729941500B5ED14 /* Notes.swift in Sources */,
 				CDCFA81727280058006F30CB /* AddViewController.swift in Sources */,
@@ -403,6 +410,7 @@
 				CDD34C6A2729308500B99FFB /* AccountViewController.swift in Sources */,
 				CDCCD3EC271EE53000F6BBD4 /* Constants.swift in Sources */,
 				CDCCD3E4271EC0DA00F6BBD4 /* SignUpViewController.swift in Sources */,
+				CDDE4CF5272D17C50012011A /* NotesRealm.swift in Sources */,
 				CDCCD3E6271EC12A00F6BBD4 /* HomeViewController.swift in Sources */,
 				CDB9606D2726C62B0036FE89 /* Protocols.swift in Sources */,
 				CDBA5CEB27212E4300CE9C0F /* Validation.swift in Sources */,

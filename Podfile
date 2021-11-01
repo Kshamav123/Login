@@ -20,6 +20,9 @@ pod 'Firebase/Analytics'
  pod 'Firebase/Firestore'
  pod 'GoogleSignIn'
  pod 'FBSDKLoginKit'
-    
+ pod 'RealmSwift'
+ pod 'Firebase/Storage' 
+ pod 'FirebaseUI/Storage'
+
 
 end
