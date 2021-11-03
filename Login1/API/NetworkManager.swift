@@ -10,6 +10,9 @@ import FirebaseAuth
 import GoogleSignIn
 import FirebaseFirestore
 
+var isLoadingMoreNotes = false
+var lastDoc: QueryDocumentSnapshot?
+
 struct NetworkManager {
     
     static let manager = NetworkManager()
@@ -78,11 +81,11 @@ struct NetworkManager {
                 let time = data["time"] as? String ?? ""
                 
                 let note = Notes(id: id, title: title, description: description, uid: uid, time: time)
-              
+                
                 notes.append(note)
-                               
+                
             }
-           
+            
             completion(notes)
         }
         
@@ -90,17 +93,17 @@ struct NetworkManager {
     
     func addNoteToFirebase(note: Notes, completion: @escaping(Error?) -> Void) {
         
-       
+        
         
         let db = Firestore.firestore()
         db.collection("notes").addDocument(data: note.dictionary)
-//        let dictionary = note.dictionary as? [String: Any]
-//        db.collection("notes").addDocument(data: dictionary!) { error in
-            
-//            completion(error)
-            
-        }
+        //        let dictionary = note.dictionary as? [String: Any]
+        //        db.collection("notes").addDocument(data: dictionary!) { error in
         
+        //            completion(error)
+        
+    }
+    
     func updateNote(note: Notes) {
         
         let db = Firestore.firestore()
@@ -127,4 +130,52 @@ struct NetworkManager {
         }
     }
     
+    func fetchMoreNotesToPagenate(completion: @escaping([Notes]) -> Void) {
+        
+        print("???????????????????????????????")
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser?.uid
+       
+        var notes : [Notes] = []
+        guard let lastDocument = lastDoc else { return }
+        isLoadingMoreNotes = true
+        db.collection("notes").start(afterDocument: lastDocument).limit(to: 10).getDocuments { snapshot, error in
+            if error == nil && snapshot != nil {
+                
+                for document in snapshot!.documents {
+                    print(">>>>>>>>>>>>>>>>>>>>>>.>>>>>..")
+                    let documentData = document.data()
+                    let note = Notes(id: document.documentID, title: documentData["title"] as! String, description: documentData["note"] as! String, uid: documentData["uid"] as! String , time: documentData["time"] as! String)
+                    notes.append(note)
+                }
+                lastDoc = snapshot!.documents.last
+                print("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
+//                print(notes)
+                isLoadingMoreNotes = false
+                print("\(notes.count)-------------------------------------")
+                completion(notes)
+            }
+        }
+    }
+    
+    func fetchNotesToPagenate(completion: @escaping([Notes]) -> Void) {
+        
+        
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser?.uid
+        var notes :[Notes] = []
+        db.collection("notes").whereField("uid", isEqualTo: uid!).limit(to: 10).getDocuments { snapshot, error in
+            if error == nil && snapshot != nil {
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    let note = Notes(id: document.documentID, title: documentData["title"] as! String, description: documentData["note"] as! String, uid: documentData["uid"] as! String , time: documentData["time"] as! String)
+                    notes.append(note)
+                }
+                lastDoc = snapshot!.documents.last
+//                print(notes)
+                completion(notes)
+            }
+        }
+        
+    }
 }

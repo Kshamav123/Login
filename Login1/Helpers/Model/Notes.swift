@@ -14,13 +14,13 @@ struct Notes {
     var description: String
     var uid: String
     var time: String
-    
+//    "uid":uid,
+//    "id": id,
     var dictionary: [String: Any] {
            return[
-            "id": id,
            "title": title,
            "description": description,
-           "uid":uid,
+            "uid":uid,
            "time":time
       
            ]

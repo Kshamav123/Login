@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 class CollectionCell: UICollectionViewCell {
+    var noteItem : Notes? {
+        
+        didSet{
+            titleLable.text = noteItem?.title
+            descriptionLabel.text = noteItem?.description
+            
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

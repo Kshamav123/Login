@@ -407,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kH-MY-5lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-1136"/>
+            <point key="canvasLocation" x="187" y="-1136"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="15M-mf-ylG">
@@ -417,23 +417,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQl-cK-XjQ">
-                                <rect key="frame" x="327" y="44" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQl-cK-XjQ">
+                                <rect key="frame" x="276" y="44" width="119" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                    <color key="baseForegroundColor" red="0.69226960829999995" green="0.35809120280000001" blue="0.84902284250000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="cancelTapped:" destination="FXC-XZ-QMc" eventType="touchUpInside" id="48C-l9-Pn2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jv-UC-G8k">
+                                <rect key="frame" x="100" y="484" width="214" height="50"/>
+                                <color key="backgroundColor" red="0.7902642916" green="0.53354050539999998" blue="0.88733454099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7vJ-nC-rEX"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Upload">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="uploadButtonTapped:" destination="FXC-XZ-QMc" eventType="touchUpInside" id="uTZ-bH-JE1"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-Hg-uKK">
+                                <rect key="frame" x="30" y="134" width="354" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="HkI-eL-iog"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="23H-EH-Fh4">
+                                <rect key="frame" x="342" y="442" width="42" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YrI-Ng-i0E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YrI-Ng-i0E" firstAttribute="trailing" secondItem="aQl-cK-XjQ" secondAttribute="trailing" constant="19" id="Blj-d1-wbT"/>
+                            <constraint firstItem="9pT-Hg-uKK" firstAttribute="top" secondItem="rnX-dE-pOb" secondAttribute="top" constant="134" id="O0h-Pj-e2d"/>
+                            <constraint firstItem="aQl-cK-XjQ" firstAttribute="leading" secondItem="YrI-Ng-i0E" secondAttribute="leading" constant="276" id="VZ1-5H-2Lp"/>
+                            <constraint firstItem="9pT-Hg-uKK" firstAttribute="top" secondItem="aQl-cK-XjQ" secondAttribute="bottom" constant="59" id="eGR-gQ-R5o"/>
+                            <constraint firstItem="6Jv-UC-G8k" firstAttribute="leading" secondItem="YrI-Ng-i0E" secondAttribute="leading" constant="100" id="iM5-Yg-6gu"/>
+                            <constraint firstItem="6Jv-UC-G8k" firstAttribute="top" secondItem="9pT-Hg-uKK" secondAttribute="bottom" constant="50" id="l9O-VW-c9L"/>
+                            <constraint firstItem="9pT-Hg-uKK" firstAttribute="leading" secondItem="YrI-Ng-i0E" secondAttribute="leading" constant="30" id="nXz-hp-T8J"/>
+                            <constraint firstItem="YrI-Ng-i0E" firstAttribute="trailing" secondItem="9pT-Hg-uKK" secondAttribute="trailing" constant="30" id="sRf-yy-dic"/>
+                            <constraint firstItem="YrI-Ng-i0E" firstAttribute="trailing" secondItem="6Jv-UC-G8k" secondAttribute="trailing" constant="100" id="xxp-4P-mia"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="9pT-Hg-uKK" id="dho-ia-UQf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41I-z4-pre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1439" y="-1024"/>
+            <point key="canvasLocation" x="989.85507246376824" y="-1114.2857142857142"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="b1c-ig-tYx">
