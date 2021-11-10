@@ -9,12 +9,15 @@ import UIKit
 
 class MenuController: UITableViewController {
     
+    //MARK :- Properties
     
     var delegate : MenuDelegate?
    
     
-    var list = ["Account","Settings","Logout"]
+    var list = ["Account","Archive","Reminder","Logout"]
 
+    //MARK :- Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
@@ -77,10 +80,21 @@ class MenuController: UITableViewController {
                 transitionToLogin()
             }
             
-        case "Settings":
+        case "Archive":
 
          print("")
-        
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let archiveViewController = storyboard.instantiateViewController(withIdentifier: "ArchiveVC") as? ArchiveCollectionViewController
+            archiveViewController?.modalPresentationStyle = .fullScreen
+            present(archiveViewController!,animated: true,completion: nil)
+            
+        case "Reminder":
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let reminderViewController = storyboard.instantiateViewController(withIdentifier: "ReminderVC") as? ReminderViewController
+            reminderViewController?.modalPresentationStyle = .fullScreen
+            present(reminderViewController!,animated: true,completion: nil)
+            
             
         default:
             print("++++++++++++++++")

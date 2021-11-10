@@ -9,17 +9,22 @@ import UIKit
 
 class ContainerViewController: UIViewController {
     
+    //MARK :- Properties
+    
     var menuController: MenuController!
     var centreController: UIViewController!
     var isExpandMenu : Bool = false
-
+    
+    //MARK :- Lifecycle
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         configureHome()
-//        configureMenuController()
-
-        // Do any additional setup after loading the view.
+        //        configureMenuController()
     }
+    
+    //MARK :- Helpers
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
@@ -30,21 +35,18 @@ class ContainerViewController: UIViewController {
         
     }
     
-    func configureHome(){
+    func configureHome() {
         
         let home = HomeViewController()
         home.delegate = self
-         centreController = UINavigationController(rootViewController: home)
-       
+        centreController = UINavigationController(rootViewController: home)
+        
         self.view.addSubview(centreController.view)
         addChild(centreController)
         centreController.didMove(toParent: self)
-        
-
-        
     }
     
-    func configureMenu(){
+    func configureMenu() {
         
         if menuController == nil {
             //add menu controller here
@@ -59,24 +61,24 @@ class ContainerViewController: UIViewController {
         
     }
     
-    func showMenu(isExpand: Bool){
-
-        if isExpand{
+    func showMenu(isExpand: Bool) {
+        
+        if isExpand {
             //show menu
             UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-
+                
                 self.centreController.view.frame.origin.x = self.centreController.view.frame.width - 80
-
+                
             }, completion: nil)
-
-        }else{
+            
+        }else {
             //hide menu
             UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-
+                
                 self.centreController.view.frame.origin.x = 0
-
+                
             }, completion: nil)
-
+            
         }
         configureStatusBarAnim()
     }
@@ -85,15 +87,17 @@ class ContainerViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.setNeedsStatusBarAppearanceUpdate()
-        
-    }, completion: nil)
+            
+        }, completion: nil)
         
     }
     
 }
+    
+//MARK :- MenuDelegate
 
-
-extension ContainerViewController: MenuDelegate{
+extension ContainerViewController: MenuDelegate {
+    
     func menuHandler(index : Int) {
         print("inside the func")
         if !isExpandMenu{
@@ -105,10 +109,8 @@ extension ContainerViewController: MenuDelegate{
         showMenu(isExpand: isExpandMenu)
     }
     
-    
-       
-    }
-    
-    
-    
+}
+
+
+
 

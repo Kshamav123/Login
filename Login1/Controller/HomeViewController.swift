@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import RealmSwift
-
+import UserNotifications
 
 
 class HomeViewController: UIViewController  {
@@ -41,17 +41,19 @@ class HomeViewController: UIViewController  {
         
         configureSearchController()
         configureCollectionView()
-        fetchNoteRealm()
+        //        fetchNoteRealm()
         fetchData()
+        //        scheduleTest()
         notesCollectioView.reloadData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchNoteRealm()
+        //        fetchNoteRealm()
         hasMoreNotes = true
         fetchData()
+        //       scheduleTest()
         notesCollectioView.reloadData()
     }
     
@@ -83,9 +85,11 @@ class HomeViewController: UIViewController  {
         let addViewController = storyboard.instantiateViewController(withIdentifier: "AddVC") as? AddViewController
         addViewController?.modalPresentationStyle = .fullScreen
         addViewController?.isNew = true
+        print("====================\(addViewController)")
         present(addViewController!,animated: true,completion: nil)
         //        print(noteArray)
         
+        print("YYYYYYYYYYYYYYYYYYYY")
     }
     
     @objc func handleMenu(){
@@ -137,27 +141,71 @@ class HomeViewController: UIViewController  {
         notesCollectioView.register(CollectionCell.self, forCellWithReuseIdentifier: "cells")
     }
     
-
-    func fetchData() {
+    func updateUI(notes: [Notes]) {
         
-        NetworkManager.manager.fetchNotesToPagenate { notes in
-            if notes.count < 10{
-                self.hasMoreNotes = false
-            }
-            self.noteArray = notes
-            DispatchQueue.main.async {
-                self.notesCollectioView.reloadData()
-            }
+        if notes.count < 10{
+            self.hasMoreNotes = false
+        }
+        self.noteArray = notes
+        DispatchQueue.main.async {
+            self.notesCollectioView.reloadData()
         }
         
     }
+    
+    func fetchData() {
+        
+        NetworkManager.manager.resultType(archivedNotes: false) { result in
+            print("FFFFFFFFFFFFFFFFFFFF")
+//            print(self.noteArray.count)
+            switch result {
+                
+            case .success(let notes) :
+                self.updateUI(notes: notes)
+//                print(self.noteArray.count)
+                print("SSSSSSSSSSSSSSSSSSSSSS")
+                
+            case .failure(let error) :
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+            
+        }
+        //        print(noteArray)
+    }
+    
     
     func fetchNoteRealm(){
         
         RealmManager.shared.fetchNotes { notesArray in
             self.notesRealm = notesArray
         }
-
+        
+    }
+    
+    
+    func scheduleTest(){
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            
+            for note in self.noteArray {
+                
+                let content = UNMutableNotificationContent()
+                content.title = note.title
+                content.sound = .default
+                content.body = note.description
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: note.reminderTime!), repeats: false)
+                
+                let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+                    
+                    if error != nil {
+                        print("something went wrong")
+                    }
+                    
+                })
+            }
+        }
     }
     
     func configureSearchController(){
@@ -173,34 +221,34 @@ class HomeViewController: UIViewController  {
     }
     
     
-
     
-    //        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //            return notesRealm.count
     //
-    //        }
+    //            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //                return notesRealm.count
     //
-    //        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    //            }
     //
-    //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cells", for: indexPath) as! CollectionCell
-    //            let note = notesRealm[indexPath.row]
-    //            cell.titleLable.text = note.title
-    //            cell.descriptionLabel.text = note.description
+    //            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     //
-    //            return cell
-    //        }
+    //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cells", for: indexPath) as! CollectionCell
+    //                let note = notesRealm[indexPath.row]
+    //                cell.titleLable.text = note.title
+    //                cell.descriptionLabel.text = note.description
     //
-    //        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //            let addViewC = storyboard.instantiateViewController(withIdentifier: "AddVC") as! AddViewController
+    //                return cell
+    //            }
     //
-    //            addViewC.isNew = false
-    //            addViewC.notesRealm = notesRealm[indexPath.row]
-    //            addViewC.modalPresentationStyle = .fullScreen
-    //            present(addViewC,animated: true,completion: nil)
+    //            func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //                let addViewC = storyboard.instantiateViewController(withIdentifier: "AddVC") as! AddViewController
     //
-    //        }
-    
+    //                addViewC.isNew = false
+    //                addViewC.notesRealm = notesRealm[indexPath.row]
+    //                addViewC.modalPresentationStyle = .fullScreen
+    //                present(addViewC,animated: true,completion: nil)
+    //
+    //            }
+    //
     
     
 }
@@ -211,14 +259,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: width, height : 100 )
+        return CGSize(width: width, height : 150 )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 10.0, left: 1.0, bottom: 1.0, right: 1.0)
+        return UIEdgeInsets(top: 50.0, left: 1.0, bottom: 1.0, right: 1.0)
     }
-   
+    
 }
 
 //MARK : UISearchResultsUpdating, UISearchBarDelegate
@@ -278,37 +326,37 @@ extension HomeViewController : UIScrollViewDelegate {
                 }
                 
                 self.noteArray.append(contentsOf: notes)
-//                self.searchFilter = self.noteArray
+                //                self.searchFilter = self.noteArray
                 self.notesCollectioView.reloadData()
             }
         }
         
     }
     
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        
-//
-//        let position = scrollView.contentOffset.y
-//        if position > notesCollectioView.contentSize.height-scrollView.frame.height-100 {
-//            guard hasMoreNotes else {return}
-//            guard !isLoadingMoreNotes else {
-//
-//                print("+++++++++++++++++++++++")
-//                return
-//            }
-//
-//            NetworkManager.manager.fetchMoreNotesToPagenate { notes in
-//                if notes.count < 10{
-//                    print(":::::::::::::::::::::")
-//                    self.hasMoreNotes = false
-//                }
-//
-//                self.noteArray.append(contentsOf: notes)
-////                self.searchFilter = self.noteArray
-//                self.notesCollectioView.reloadData()
-//            }
-//        }
-//    }
+    //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    //
+    //
+    //        let position = scrollView.contentOffset.y
+    //        if position > notesCollectioView.contentSize.height-scrollView.frame.height-100 {
+    //            guard hasMoreNotes else {return}
+    //            guard !isLoadingMoreNotes else {
+    //
+    //                print("+++++++++++++++++++++++")
+    //                return
+    //            }
+    //
+    //            NetworkManager.manager.fetchMoreNotesToPagenate { notes in
+    //                if notes.count < 10{
+    //                    print(":::::::::::::::::::::")
+    //                    self.hasMoreNotes = false
+    //                }
+    //
+    //                self.noteArray.append(contentsOf: notes)
+    ////                self.searchFilter = self.noteArray
+    //                self.notesCollectioView.reloadData()
+    //            }
+    //        }
+    //    }
 }
 
 //MARK : UICollectionViewDataSource
@@ -318,30 +366,18 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if searching{
-            return searchFilter.count
-        }else{
-            return noteArray.count
-        }
+        return searching ? searchFilter.count : noteArray.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if searching {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cells", for: indexPath) as! CollectionCell
-            let note = searchFilter[indexPath.row]
-            cell.noteItem = note
-            return cell
-            
-        }else{
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cells", for: indexPath) as! CollectionCell
-            let note = noteArray[indexPath.row]
-            cell.noteItem = note
-            return cell
-        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cells", for: indexPath) as! CollectionCell
+        
+        let note = searching ? searchFilter[indexPath.row] : noteArray[indexPath.row]
+        cell.noteItem = note
+        return cell
     }
-    
     
 }
 
@@ -350,25 +386,15 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if searching {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let addViewC = storyboard.instantiateViewController(withIdentifier: "AddVC") as! AddViewController
-            
-            addViewC.isNew = false
-            addViewC.note = searchFilter[indexPath.row]
-            addViewC.notesRealm = notesRealm[indexPath.row]
-            addViewC.modalPresentationStyle = .fullScreen
-            present(addViewC,animated: true,completion: nil)
-        } else{
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let addViewC = storyboard.instantiateViewController(withIdentifier: "AddVC") as! AddViewController
-            
-            addViewC.isNew = false
-            addViewC.note = noteArray[indexPath.row]
-            addViewC.notesRealm = notesRealm[indexPath.row]
-            addViewC.modalPresentationStyle = .fullScreen
-            present(addViewC,animated: true,completion: nil)
-        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let addViewC = storyboard.instantiateViewController(withIdentifier: "AddVC") as! AddViewController
+        addViewC.isNew = false
+        addViewC.note = searching ? searchFilter[indexPath.row] : noteArray[indexPath.row]
+        //        addViewC.notesRealm = notesRealm[indexPath.row]
+        addViewC.modalPresentationStyle = .fullScreen
+        present(addViewC,animated: true,completion: nil)
+        
         
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class CollectionCell: UICollectionViewCell {
+//    var cellButton: UIButton!
     var noteItem : Notes? {
         
         didSet{
@@ -25,7 +26,10 @@ class CollectionCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
+        super.init(coder: coder)
+        
+//        fatalError("init(coder:) has not been implemented")
     }
     
     var titleLable: UILabel = {
@@ -43,6 +47,37 @@ class CollectionCell: UICollectionViewCell {
         return label
     }()
     
+//    var archiveButton: UIButton = {
+
+//        let button = UIButton()
+//        let image = UIImage(systemName: "folder.fill.badge.plus")
+//        button.frame = CGRect(x: 200, y: 400, width: 52, height: 52)
+//        button.setTitle("Archive", for: .normal)
+//        button.layer.borderWidth = 1.0
+//        button.layer.borderColor = UIColor.black.cgColor
+//        button.layer.cornerRadius = 25
+//        button.titleLabel?.textColor = UIColor.black
+//        button.setTitleColor(UIColor.black, for: .normal)
+//        button.setImage(image, for: .normal)
+//        button.addTarget(self, action: #selector(archiveButtonHandle), for: .touchUpInside)
+//        return button
+//    }()
+    
+//    var reminderButton: UIButton = {
+//
+//        let button = UIButton()
+//
+//        return button
+//
+//
+//    }()
+    
+    
+//  @objc func archiveButtonHandle() {
+//
+//      print("archive")
+//    }
+    
     func configure() {
        
         layer.cornerRadius = 5
@@ -50,8 +85,11 @@ class CollectionCell: UICollectionViewCell {
         layer.borderColor = UIColor.purple.cgColor
         addSubview(titleLable)
         addSubview(descriptionLabel)
+//        addSubview(archiveButton)
         titleLable.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+//        archiveButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             
             titleLable.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -61,8 +99,16 @@ class CollectionCell: UICollectionViewCell {
             
             descriptionLabel.topAnchor.constraint(equalTo: titleLable.bottomAnchor, constant: 10),
             descriptionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            descriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            descriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -150),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            
+//            cellButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 100),
+//            cellButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 50),
+//            archiveButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+//            archiveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+//            archiveButton.heightAnchor.constraint(equalToConstant: 50),
+//            archiveButton.widthAnchor.constraint(equalToConstant: 50)
+            
         ])
         
         

@@ -11,6 +11,8 @@ import Firebase
 import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
+    
+    //MARK :- Properties
 
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,6 +26,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    //MARK :- Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +34,8 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-  
-    
+   
+    //MARK :- Helpers
     
     func validateFields() -> String?{
         
@@ -57,6 +60,9 @@ class SignUpViewController: UIViewController {
         
         return nil
     }
+    
+    
+    //MARK :- Actions
     
     @IBAction func signUpTapped(_ sender: UIButton) {
         

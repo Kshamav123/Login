@@ -15,6 +15,7 @@ import FirebaseStorageUI
 class AccountViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    
     var imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -103,6 +104,7 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
             print("Photo upload")
             self.profileImage()
+           
         }
     }
     

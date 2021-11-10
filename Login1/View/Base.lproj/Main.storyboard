@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -325,7 +326,7 @@
                                     <constraint firstAttribute="height" constant="31" id="dsb-V0-4qx"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                <buttonConfiguration key="configuration" style="plain" image="delete.backward" catalog="system">
                                     <color key="baseForegroundColor" red="0.47003808190000002" green="0.2431372114" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -352,24 +353,24 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIG-EQ-sEO">
-                                <rect key="frame" x="100" y="541" width="214" height="50"/>
+                                <rect key="frame" x="100" y="511" width="214" height="40"/>
                                 <color key="backgroundColor" red="0.7902642916" green="0.53354050539999998" blue="0.88733454099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="fag-Qn-kOZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="zoX-mY-Aca"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add notes">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addNotesButton:" destination="vXM-Oz-5jr" eventType="touchUpInside" id="XWw-J6-UFa"/>
+                                    <action selector="addNotesButton:" destination="vXM-Oz-5jr" eventType="touchUpInside" id="mHS-C3-vyQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwk-Ym-TCV">
-                                <rect key="frame" x="100" y="621" width="214" height="50"/>
+                                <rect key="frame" x="100" y="571" width="214" height="40"/>
                                 <color key="backgroundColor" red="0.80697700920000004" green="0.66584493239999998" blue="0.88733454099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="qMS-7u-stN"/>
+                                    <constraint firstAttribute="height" constant="40" id="k3r-Mx-UUt"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Delete Notes">
@@ -379,35 +380,77 @@
                                     <action selector="deleteNotesButton:" destination="vXM-Oz-5jr" eventType="touchUpInside" id="ukE-C0-Iya"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9b-Xe-PXj">
+                                <rect key="frame" x="290" y="46" width="6" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="rkd-9l-TX3"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.up.doc.fill" catalog="system">
+                                    <color key="baseForegroundColor" red="0.7902642916" green="0.53354050539999998" blue="0.88733454099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="archivedButton:" destination="vXM-Oz-5jr" eventType="touchUpInside" id="7nu-at-pGz"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kjI-aZ-opc">
+                                <rect key="frame" x="20" y="631" width="374" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Qdd-k2-8qc"/>
+                                </constraints>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-ez-UaE">
+                                <rect key="frame" x="225" y="46" width="57" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="nxW-q3-0rg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="timer" catalog="system">
+                                    <color key="baseForegroundColor" red="0.47003808190000002" green="0.2431372114" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="reminderButton:" destination="vXM-Oz-5jr" eventType="touchUpInside" id="baJ-tr-i8u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lf2-KI-yGx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nwk-Ym-TCV" firstAttribute="top" secondItem="bIG-EQ-sEO" secondAttribute="bottom" constant="30" id="1qD-0e-ibm"/>
+                            <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="kjI-aZ-opc" secondAttribute="trailing" constant="20" id="0CK-Lz-iSZ"/>
+                            <constraint firstItem="Hbe-ez-UaE" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="225" id="7PO-dH-8t6"/>
                             <constraint firstItem="B8Z-dR-amT" firstAttribute="top" secondItem="Lf2-KI-yGx" secondAttribute="top" constant="2" id="7qv-7R-2mh"/>
                             <constraint firstItem="eeJ-s7-Yzy" firstAttribute="top" secondItem="B8Z-dR-amT" secondAttribute="bottom" constant="64" id="AGL-xS-kgB"/>
-                            <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="bIG-EQ-sEO" secondAttribute="trailing" constant="100" id="CFM-w4-oZd"/>
                             <constraint firstItem="CuT-5b-mZ8" firstAttribute="top" secondItem="eeJ-s7-Yzy" secondAttribute="bottom" constant="10" id="Cma-BR-AbO"/>
                             <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="B8Z-dR-amT" secondAttribute="trailing" constant="20" id="Czf-nN-Teg"/>
-                            <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="nwk-Ym-TCV" secondAttribute="trailing" constant="100" id="EU7-I7-pPY"/>
-                            <constraint firstItem="nwk-Ym-TCV" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="100" id="Kf1-yQ-paM"/>
+                            <constraint firstItem="nwk-Ym-TCV" firstAttribute="top" secondItem="bIG-EQ-sEO" secondAttribute="bottom" constant="20" id="DVU-QC-ck0"/>
+                            <constraint firstItem="bIG-EQ-sEO" firstAttribute="top" secondItem="CuT-5b-mZ8" secondAttribute="bottom" constant="20" id="Fbu-hV-z3a"/>
+                            <constraint firstItem="X9b-Xe-PXj" firstAttribute="top" secondItem="Lf2-KI-yGx" secondAttribute="top" constant="2" id="GUL-dq-Irk"/>
+                            <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="bIG-EQ-sEO" secondAttribute="trailing" constant="100" id="GcT-o0-NZa"/>
+                            <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="nwk-Ym-TCV" secondAttribute="trailing" constant="100" id="HiC-Jd-8s6"/>
+                            <constraint firstItem="bIG-EQ-sEO" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="100" id="KtR-4a-xLf"/>
                             <constraint firstItem="CuT-5b-mZ8" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="60" id="MSQ-3F-kcX"/>
+                            <constraint firstItem="nwk-Ym-TCV" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="100" id="PpV-Ka-van"/>
                             <constraint firstItem="eeJ-s7-Yzy" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="60" id="Uew-gE-x2J"/>
-                            <constraint firstItem="bIG-EQ-sEO" firstAttribute="top" secondItem="CuT-5b-mZ8" secondAttribute="bottom" constant="50" id="hZe-MF-eEp"/>
+                            <constraint firstItem="X9b-Xe-PXj" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="290" id="bA4-sr-eM8"/>
+                            <constraint firstItem="kjI-aZ-opc" firstAttribute="top" secondItem="nwk-Ym-TCV" secondAttribute="bottom" constant="20" id="cBZ-GG-zpt"/>
+                            <constraint firstItem="B8Z-dR-amT" firstAttribute="leading" secondItem="X9b-Xe-PXj" secondAttribute="trailing" constant="8" symbolic="YES" id="lda-AX-ir8"/>
                             <constraint firstItem="B8Z-dR-amT" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="304" id="n5Z-Y4-onB"/>
                             <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="CuT-5b-mZ8" secondAttribute="trailing" constant="60" id="p2P-Fr-sQJ"/>
+                            <constraint firstItem="kjI-aZ-opc" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="20" id="t0s-jw-oVZ"/>
+                            <constraint firstItem="X9b-Xe-PXj" firstAttribute="leading" secondItem="Hbe-ez-UaE" secondAttribute="trailing" constant="8" id="upA-AG-TJR"/>
+                            <constraint firstItem="Hbe-ez-UaE" firstAttribute="top" secondItem="Lf2-KI-yGx" secondAttribute="top" constant="2" id="w1N-Ry-sap"/>
                             <constraint firstItem="Lf2-KI-yGx" firstAttribute="trailing" secondItem="eeJ-s7-Yzy" secondAttribute="trailing" constant="60" id="yi3-ko-L6B"/>
-                            <constraint firstItem="bIG-EQ-sEO" firstAttribute="leading" secondItem="Lf2-KI-yGx" secondAttribute="leading" constant="100" id="zTj-9f-DDl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionTextView" destination="CuT-5b-mZ8" id="Xyn-zH-bbL"/>
+                        <outlet property="reminderTimes" destination="kjI-aZ-opc" id="DQN-jM-o92"/>
                         <outlet property="titleTextField" destination="eeJ-s7-Yzy" id="9gJ-Yb-zCH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kH-MY-5lH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187" y="-1136"/>
+            <point key="canvasLocation" x="239" y="-1146"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="15M-mf-ylG">
@@ -450,10 +493,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="23H-EH-Fh4">
-                                <rect key="frame" x="342" y="442" width="42" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YrI-Ng-i0E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -475,7 +514,122 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41I-z4-pre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.85507246376824" y="-1114.2857142857142"/>
+            <point key="canvasLocation" x="1159" y="-1189"/>
+        </scene>
+        <!--Archive Collection View Controller-->
+        <scene sceneID="Z9s-SX-mch">
+            <objects>
+                <viewController storyboardIdentifier="ArchiveVC" id="xPW-Er-f9Y" customClass="ArchiveCollectionViewController" customModule="Login1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P2Z-Cm-aj7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7W8-10-n20">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xsq-Z8-cZe">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cells" id="uH1-r0-vU8" customClass="CollectionCell" customModule="Login1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VcR-7b-ACw">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-03-PJt">
+                                <rect key="frame" x="338" y="59" width="46" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="delete.backward" catalog="system">
+                                    <color key="baseForegroundColor" red="0.47003808190000002" green="0.2431372114" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="xPW-Er-f9Y" eventType="touchUpInside" id="zfn-VN-XKq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EGT-cw-vba"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7W8-10-n20" firstAttribute="top" secondItem="EGT-cw-vba" secondAttribute="top" constant="50" id="D0l-4r-Dao"/>
+                            <constraint firstItem="7W8-10-n20" firstAttribute="trailing" secondItem="EGT-cw-vba" secondAttribute="trailing" id="NfJ-QU-8Tn"/>
+                            <constraint firstItem="7W8-10-n20" firstAttribute="bottom" secondItem="EGT-cw-vba" secondAttribute="bottom" id="QIh-jO-sB4"/>
+                            <constraint firstItem="7W8-10-n20" firstAttribute="leading" secondItem="EGT-cw-vba" secondAttribute="leading" id="X0c-QT-8Ve"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="notesCollectioView" destination="7W8-10-n20" id="e9c-jX-YZu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBW-m0-u8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1994" y="-1268"/>
+        </scene>
+        <!--Reminder View Controller-->
+        <scene sceneID="56T-B9-xje">
+            <objects>
+                <viewController storyboardIdentifier="ReminderVC" id="Stu-iM-kCV" customClass="ReminderViewController" customModule="Login1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vmC-kX-VE8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c3n-mQ-fEi">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aK6-7k-sJm">
+                                    <size key="itemSize" width="186" height="193"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cells" id="kX0-30-AEe" customClass="CollectionCell" customModule="Login1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="186" height="193"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YcC-hf-2Rm">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="193"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="186" height="193"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-Qe-vaA">
+                                <rect key="frame" x="338" y="60" width="46" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="delete.backward" catalog="system">
+                                    <color key="baseForegroundColor" red="0.47003808190000002" green="0.2431372114" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="Stu-iM-kCV" eventType="touchUpInside" id="OAZ-bd-mOo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VSi-1H-iYx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="c3n-mQ-fEi" firstAttribute="top" secondItem="VSi-1H-iYx" secondAttribute="top" constant="50" id="4Oi-5D-T1z"/>
+                            <constraint firstItem="c3n-mQ-fEi" firstAttribute="trailing" secondItem="VSi-1H-iYx" secondAttribute="trailing" id="D42-I4-7JG"/>
+                            <constraint firstItem="c3n-mQ-fEi" firstAttribute="bottom" secondItem="VSi-1H-iYx" secondAttribute="bottom" id="Ii5-KM-XvZ"/>
+                            <constraint firstItem="c3n-mQ-fEi" firstAttribute="leading" secondItem="VSi-1H-iYx" secondAttribute="leading" id="mxZ-VP-jWb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="c3n-mQ-fEi" id="Tco-Xz-1ka"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7uH-Pf-Iuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3194" y="-1446"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="b1c-ig-tYx">
@@ -546,11 +700,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uM4-yp-RIJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-465" y="-1046"/>
+            <point key="canvasLocation" x="-706" y="-1047"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.doc.fill" catalog="system" width="115" height="128"/>
+        <image name="delete.backward" catalog="system" width="128" height="104"/>
         <image name="icons8-google-48" width="48" height="48"/>
+        <image name="timer" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

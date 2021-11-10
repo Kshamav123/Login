@@ -25,6 +25,7 @@ struct RealmManager {
     mutating func deleteNote(note: NotesRealm) {
         
         try! realmInstance.write({
+            
             realmInstance.delete(note)
         })
         
@@ -54,6 +55,7 @@ struct RealmManager {
         }
         
         completion(notesArray)
-//        print(notes)
+        print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+       print(notes)
     }
 }
